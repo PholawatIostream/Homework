@@ -1,15 +1,50 @@
-#include<iostream>
+#include <iostream>
+#include <string>
+
 using namespace std;
+int update_balance(string, float, float &balance);
 int main()
 {
 
-	int num;
-	cout<<" Enter Point : ",cin>>num;
-		if ((num>0 ) && (num < 49))cout<<" You got F ";
-		else if ((num > 50) && (num < 59))cout<<" You got D ";
-		else if ((num > 60) && (num < 69))cout<<" You got C ";
-		else if ((num > 70) && (num < 79))cout<<" You got B ";
-		else if ((num > 80) && (num < 100))cout<<" You got A ";
-		cout<<endl;
-	return 0;
+	float f, t, dollars, balance = 10000;
+	string x;
+	char command;
+	int q;
+
+	cout << "Exit with 0 \n";
+	cout << "Your balance = " << balance  << endl;
+
+	do{
+		
+		cout << "Input command (1 or withdraw, 2 deposit): ";
+		cin >> command;
+		if (command == '0')break;
+		cout << "Input amount : ";
+		cin >> dollars;
+		x = command;
+		f = dollars;
+
+		update_balance(x, f, t);
+		cout << "Your balance = " <<update_balance(x, f, balance);
+		cout  << endl;
+
+	} while (command != '0');
+	cout << "End\n";
+}
+int update_balance(string command, float dollars, float &balance)
+{
+
+
+	if (command == "1")
+	{
+		balance = balance - dollars;
+
+	}
+
+	if (command == "2")
+	{
+		balance = balance + dollars;
+	}
+
+	return(balance);
 }
